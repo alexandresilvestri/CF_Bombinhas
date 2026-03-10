@@ -7,13 +7,15 @@
 - Ruby On Rails
 - React (Typescript)
 - Tailwind
-- PostgresSQL
-- Capacitor (Run the App on native mobile experience)
+- PostgreSQL
+- React Native
 
-## Host (Cloud / Serverless)
+## Host (Full AWS)
 
--  (Web App)
-- Neon (Database)
+- ECS + Fargate (API)
+- S3 + CloudFront (Web Client)
+- Aurora RDS (SQL Database)
+- Cognito + SNS (Mobile)
 
 ## Init folder structure
 
@@ -33,12 +35,6 @@ Run:
 
 Acess https://localhost:3000
 
-To connect on the local database with postgres tool, use:
-- host: localhost
-- port: 5432
-- database: neondb
-- user: neon
-- passwd: npg
 
 ### Claude Code
 

@@ -13,7 +13,7 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "fish",
+        "terminal.integrated.defaultProfile.linux": "zsh",
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.codeActionsOnSave": {
@@ -42,14 +42,12 @@
   "forwardPorts": [3000, 5432],
   "portsAttributes": {
     "3000": {
-      "label": "Next.js App",
+      "label": "",
       "onAutoForward": "notify"
     },
     "5432": {
-      "label": "Neon Local Proxy",
+      "label": "",
       "onAutoForward": "silent"
     }
-  },
-
-  "postCreateCommand": "apk add --no-cache fish"
+  }
 }
