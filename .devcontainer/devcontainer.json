@@ -1,0 +1,53 @@
+{
+  "name": "EazyBox",
+
+  "dockerComposeFile": "../compose.yml",
+
+  "service": "web",
+  "workspaceFolder": "/app",
+
+  "runServices": ["web", "db"],
+
+  "shutdownAction": "none",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "typescript.tsdk": "node_modules/typescript/lib"
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "Editorconfig.Editorconfig",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-typescript-next",
+        "oven.bun-vscode",
+        "github.vscode-github-actions",
+        "GitHub.vscode-pull-request-github",
+        "ckolkman.vscode-postgres",
+        "ms-azuretools.vscode-docker",
+        "christian-kohler.path-intellisense",
+        "eamodio.gitlens",
+        "yzhang.markdown-all-in-one",
+      ]
+    }
+  },
+
+  "forwardPorts": [3000, 5432],
+  "portsAttributes": {
+    "3000": {
+      "label": "",
+      "onAutoForward": "notify"
+    },
+    "5432": {
+      "label": "",
+      "onAutoForward": "silent"
+    }
+  }
+}
