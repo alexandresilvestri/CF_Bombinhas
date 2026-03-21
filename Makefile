@@ -59,7 +59,7 @@ db-status:
 	docker compose exec web bin/rails db:migrate:status
 
 db-console:
-	docker compose exec db psql -U eazybox eazybox_development
+	docker compose exec db psql -U eazybox eazybox
 
 test:
 	docker compose run --rm -e RAILS_ENV=test test

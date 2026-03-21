@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: eazybox_development
+  database: eazybox
 
 test:
   <<: *default
