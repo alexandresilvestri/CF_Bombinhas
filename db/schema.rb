@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_21_144742) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_23_221942) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "sessions", force: :cascade do |t|
-    t.datetime "archived_at"
     t.datetime "created_at", null: false
-    t.datetime "deleted_at"
     t.integer "max_capacity"
     t.string "name"
     t.time "start_time"

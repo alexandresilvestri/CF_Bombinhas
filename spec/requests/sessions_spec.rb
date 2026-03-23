@@ -17,9 +17,7 @@ RSpec.describe "/sessions", type: :request do
     {
       start_time: "06:30",
       max_capacity: 12,
-      name: "Morning Class",
-      archived_at: "2026-03-23T10:00:00",
-      deleted_at: "2026-03-24T10:00:00"
+      name: "Morning Class"
     }
   }
 
@@ -98,9 +96,7 @@ RSpec.describe "/sessions", type: :request do
         {
           start_time: "07:45",
           max_capacity: 20,
-          name: "Updated Class",
-          archived_at: "2026-03-25T10:00:00",
-          deleted_at: "2026-03-26T10:00:00"
+          name: "Updated Class"
         }
       }
 
@@ -112,8 +108,6 @@ RSpec.describe "/sessions", type: :request do
         expect(session.start_time.strftime("%H:%M")).to eq("07:45")
         expect(session.max_capacity).to eq(20)
         expect(session.name).to eq("Updated Class")
-        expect(session.archived_at).to eq(Time.zone.parse("2026-03-25T10:00:00"))
-        expect(session.deleted_at).to eq(Time.zone.parse("2026-03-26T10:00:00"))
       end
 
       it "redirects to the session" do
