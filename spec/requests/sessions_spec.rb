@@ -13,16 +13,20 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/sessions", type: :request do
-  
-  # This should return the minimal set of attributes required to create a valid
-  # Session. As you add validations to Session, be sure to
-  # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      start_time: "06:30",
+      max_capacity: 12,
+      name: "Morning Class",
+      archived_at: "2026-03-23T10:00:00",
+      deleted_at: "2026-03-24T10:00:00"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      name: "Broken Session"
+    }
   }
 
   describe "GET /index" do
@@ -71,6 +75,10 @@ RSpec.describe "/sessions", type: :request do
     end
 
     context "with invalid parameters" do
+      before do
+        allow_any_instance_of(Session).to receive(:save).and_return(false)
+      end
+
       it "does not create a new Session" do
         expect {
           post sessions_url, params: { session: invalid_attributes }
@@ -87,14 +95,25 @@ RSpec.describe "/sessions", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          start_time: "07:45",
+          max_capacity: 20,
+          name: "Updated Class",
+          archived_at: "2026-03-25T10:00:00",
+          deleted_at: "2026-03-26T10:00:00"
+        }
       }
 
       it "updates the requested session" do
         session = Session.create! valid_attributes
         patch session_url(session), params: { session: new_attributes }
         session.reload
-        skip("Add assertions for updated state")
+
+        expect(session.start_time.strftime("%H:%M")).to eq("07:45")
+        expect(session.max_capacity).to eq(20)
+        expect(session.name).to eq("Updated Class")
+        expect(session.archived_at).to eq(Time.zone.parse("2026-03-25T10:00:00"))
+        expect(session.deleted_at).to eq(Time.zone.parse("2026-03-26T10:00:00"))
       end
 
       it "redirects to the session" do
@@ -106,6 +125,10 @@ RSpec.describe "/sessions", type: :request do
     end
 
     context "with invalid parameters" do
+      before do
+        allow_any_instance_of(Session).to receive(:update).and_return(false)
+      end
+
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         session = Session.create! valid_attributes
         patch session_url(session), params: { session: invalid_attributes }

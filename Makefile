@@ -1,5 +1,5 @@
 .PHONY: up down restart build logs console sh db-migrate db-rollback \
-       db-seed db-reset db-create db-prepare test setup clean
+       db-seed db-reset db-create db-prepare test rspec setup clean
 
 up:
 	docker compose up -d
@@ -64,6 +64,9 @@ db-console:
 test:
 	docker compose run --rm -e RAILS_ENV=test test
 
+rspec:
+	docker compose run --rm -e RAILS_ENV=test test
+
 test-prepare:
 	docker compose exec web bin/rails db:test:prepare
 
@@ -111,6 +114,7 @@ help:
 	@echo "  db-status          Show migration status"
 	@echo "  db-console         Open psql console"
 	@echo "  test               Run the test suite"
+	@echo "  rspec              Run the RSpec suite"
 	@echo "  test-prepare       Prepare the test database"
 	@echo "  lint               Run RuboCop"
 	@echo "  lint-fix           Run RuboCop with auto-correct"

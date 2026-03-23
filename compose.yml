@@ -35,7 +35,7 @@ services:
       - bundle_cache:/usr/local/bundle
     profiles:
       - test
-    command: ["bin/rails", "test"]
+    command: ["bundle", "exec", "rspec"]
 
   db:
     image: postgres:17
