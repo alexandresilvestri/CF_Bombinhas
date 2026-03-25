@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :sessions
+  resources :tenants
   resources :weekly_schedules
 
   get "up" => "rails/health#show", as: :rails_health_check
