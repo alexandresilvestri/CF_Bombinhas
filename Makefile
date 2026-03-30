@@ -1,5 +1,5 @@
 .PHONY: up down restart build logs console sh db-migrate db-rollback \
-       db-seed db-reset db-create db-prepare test rspec setup clean
+       db-seed db-reset db-create db-prepare test rspec setup clean bundle-update
 
 up:
 	docker compose up -d
@@ -85,6 +85,9 @@ audit:
 bundle:
 	docker compose run --rm web bundle install
 
+bundle-update:
+	docker compose run --rm web bundle update $(GEMS)
+
 setup:
 	docker compose up -d --build
 	docker compose exec web bin/rails db:prepare
@@ -121,6 +124,7 @@ help:
 	@echo "  security           Run Brakeman security scan"
 	@echo "  audit              Run bundle-audit"
 	@echo "  bundle             Run bundle install"
+	@echo "  bundle-update      Update gems (use GEMS='gem1 gem2')"
 	@echo "  setup              Build, start, and prepare the database"
 	@echo "  clean              Stop containers and remove volumes"
 
