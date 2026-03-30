@@ -63,7 +63,7 @@ builder:
 
 accessories:
   db:
-    image: postgres:18
+    image: postgres:17
     host: 142.93.188.6
     port: "5432"
     env:
