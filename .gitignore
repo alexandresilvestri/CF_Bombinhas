@@ -15,6 +15,8 @@
 /public/assets
 /config/*.key
 .rspec_status
+.kamal
+.kamal/secrets
 
 # Ignore key files for decrypting credentials and more.
 /config/*.key

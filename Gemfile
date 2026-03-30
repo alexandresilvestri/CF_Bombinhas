@@ -10,6 +10,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "rspec-rails"
 gem "tailwindcss-rails", "~> 4.4"
+gem "discard", "~> 1.4"
 
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -44,5 +45,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "discard", "~> 1.4"
