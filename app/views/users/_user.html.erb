@@ -1,0 +1,26 @@
+<div id="<%= dom_id user %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Id:</strong>
+    <%= user.id %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= user.email %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Email confirm:</strong>
+    <%= user.email_confirm? ? "Yes" : "No" %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Password hash:</strong>
+    <%= user.password_hash %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">First name:</strong>
+    <%= user.first_name %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Last name:</strong>
+    <%= user.last_name %>
+  </div>
+</div>
