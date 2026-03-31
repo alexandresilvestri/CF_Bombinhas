@@ -17,11 +17,11 @@ RSpec.describe "/gyms", type: :request do
   # Gym. As you add validations to Gym, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: "Test Gym", corporate_name: "Test Corp", subdomain: "test-gym" }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: "Test Gym", subdomain: "INVALID SUBDOMAIN!" }
   }
 
   describe "GET /index" do
@@ -86,14 +86,15 @@ RSpec.describe "/gyms", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: "Updated Gym", subdomain: "updated-gym" }
       }
 
       it "updates the requested gym" do
         gym = Gym.create! valid_attributes
         patch gym_url(gym), params: { gym: new_attributes }
         gym.reload
-        skip("Add assertions for updated state")
+        expect(gym.name).to eq("Updated Gym")
+        expect(gym.subdomain).to eq("updated-gym")
       end
 
       it "redirects to the gym" do

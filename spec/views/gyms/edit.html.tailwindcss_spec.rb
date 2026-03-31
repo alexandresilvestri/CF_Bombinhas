@@ -4,7 +4,8 @@ RSpec.describe "gyms/edit", type: :view do
   let(:gym) {
     Gym.create!(
       name: "MyString",
-      corporate_name: "MyString"
+      corporate_name: "MyString",
+      subdomain: "my-string"
     )
   }
 
@@ -19,6 +20,8 @@ RSpec.describe "gyms/edit", type: :view do
       assert_select "input[name=?]", "gym[name]"
 
       assert_select "input[name=?]", "gym[corporate_name]"
+
+      assert_select "input[name=?]", "gym[subdomain]"
     end
   end
 end

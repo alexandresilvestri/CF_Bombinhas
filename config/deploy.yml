@@ -8,6 +8,8 @@ servers:
     hosts:
       - 142.93.188.6
 
+deploy_timeout: 120
+
 proxy:
   ssl: true
   host: eazybox.com.br

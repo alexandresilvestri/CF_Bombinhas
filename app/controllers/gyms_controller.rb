@@ -65,6 +65,6 @@ class GymsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gym_params
-      params.expect(gym: [ :name, :corporate_name ])
+      params.expect(gym: [ :name, :corporate_name, :subdomain ])
     end
 end
