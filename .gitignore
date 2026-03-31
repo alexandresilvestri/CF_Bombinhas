@@ -18,9 +18,9 @@
 .kamal
 .kamal/secrets
 
-# Ignore key files for decrypting credentials and more.
 /config/*.key
 
+.rspec_status
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
