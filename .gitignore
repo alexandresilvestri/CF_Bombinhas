@@ -20,7 +20,5 @@
 
 /config/*.key
 
-.rspec_status
-
 /app/assets/builds/*
 !/app/assets/builds/.keep

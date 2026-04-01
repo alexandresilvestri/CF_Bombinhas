@@ -74,7 +74,7 @@ lint:
 	docker compose exec web bin/rubocop
 
 lint-fix:
-	docker compose exec web bin/rubocop -A
+	docker compose exec web bin/rubocop --force-exclusion -A
 
 security:
 	docker compose exec web bin/brakeman
