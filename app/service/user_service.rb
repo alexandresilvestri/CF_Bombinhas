@@ -1,2 +1,2 @@
-class UserSerice
+class UserService
 end
