@@ -1,0 +1,42 @@
+<%= form_with(model: workout, class: "contents") do |form| %>
+  <% if workout.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(workout.errors.count, "error") %> prohibited this workout from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% workout.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :gym_id %>
+    <%= form.text_field :gym_id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": workout.errors[:gym_id].none?, "border-red-400 focus:outline-red-600": workout.errors[:gym_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": workout.errors[:name].none?, "border-red-400 focus:outline-red-600": workout.errors[:name].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :warm_up %>
+    <%= form.textarea :warm_up, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": workout.errors[:warm_up].none?, "border-red-400 focus:outline-red-600": workout.errors[:warm_up].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :skill %>
+    <%= form.textarea :skill, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": workout.errors[:skill].none?, "border-red-400 focus:outline-red-600": workout.errors[:skill].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :wod %>
+    <%= form.textarea :wod, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": workout.errors[:wod].none?, "border-red-400 focus:outline-red-600": workout.errors[:wod].any?}] %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

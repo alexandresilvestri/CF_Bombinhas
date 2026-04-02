@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_31_222357) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_02_002120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -32,4 +32,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_31_222357) do
     t.string "password_hash"
     t.datetime "updated_at", null: false
   end
+
+  create_table "workouts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.uuid "gym_id", null: false
+    t.string "name", null: false
+    t.text "skill"
+    t.datetime "updated_at", null: false
+    t.text "warm_up"
+    t.text "wod"
+    t.index ["gym_id"], name: "index_workouts_on_gym_id"
+  end
+
+  add_foreign_key "workouts", "gyms"
 end
