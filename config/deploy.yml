@@ -1,3 +1,6 @@
+ssh:
+  user: alexandresilvestri
+
 service: eazybox
 
 image: alexandresilvestri/eazybox
