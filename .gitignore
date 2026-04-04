@@ -17,8 +17,6 @@
 .rspec_status
 .kamal
 .kamal/secrets
-
 /config/*.key
-
 /app/assets/builds/*
 !/app/assets/builds/.keep

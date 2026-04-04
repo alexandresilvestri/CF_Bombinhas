@@ -18,7 +18,6 @@ registry:
   password:
      - KAMAL_REGISTRY_PASSWORD
 
-# Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
   secret:
     - RAILS_MASTER_KEY
@@ -26,8 +25,7 @@ env:
     - DATABASE_URL
   clear:
     SOLID_QUEUE_IN_PUMA: true
-    # Log everything from Rails
-    # RAILS_LOG_LEVEL: debug
+    RAILS_LOG_LEVEL: debug
 
 aliases:
   console: app exec --interactive --reuse "bin/rails console"
