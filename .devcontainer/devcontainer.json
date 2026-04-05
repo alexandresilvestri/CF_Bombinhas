@@ -1,3 +1,4 @@
+
 {
   "name": "EazyBox",
 
@@ -8,6 +9,7 @@
 
   "runServices": ["web", "db"],
 
+  "remoteUser": "devuser",
   "shutdownAction": "none",
 
   "customizations": {
@@ -35,12 +37,14 @@
         "christian-kohler.path-intellisense",
         "eamodio.gitlens",
         "yzhang.markdown-all-in-one",
-        "Anthropic.claude-code"
+        "Anthropic.claude-code",
+        "Shopify.ruby-lsp",
+        "KoichiSasada.vscode-rdbg"
       ]
     }
   },
 
-  "forwardPorts": [3000, 5432],
+  "forwardPorts": [3000, 5432, 12345],
   "portsAttributes": {
     "3000": {
       "label": "",

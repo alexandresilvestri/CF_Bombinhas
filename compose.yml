@@ -6,6 +6,7 @@ services:
     user: "1000:1000"
     ports:
       - "3000:3000"
+      - "12345:12345"
     depends_on:
       db:
         condition: service_healthy
@@ -14,6 +15,8 @@ services:
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
       DATABASE_URL: postgres://eazybox@db:5432/eazybox
       BINDING: "0.0.0.0"
+      RUBY_DEBUG_PORT: "12345"
+      RUBY_DEBUG_HOST: "0.0.0.0"
     volumes:
       - .:/rails
       - bundle_cache:/usr/local/bundle

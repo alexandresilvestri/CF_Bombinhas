@@ -9,6 +9,8 @@ RUN apt-get update -qq && \
       curl libvips && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+RUN useradd -m -u 1000 -s /bin/bash devuser
+
 ENV BUNDLE_PATH="/usr/local/bundle"
 
 RUN gem install foreman
