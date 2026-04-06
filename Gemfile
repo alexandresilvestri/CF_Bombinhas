@@ -11,28 +11,20 @@ gem "jbuilder"
 gem "rspec-rails"
 gem "tailwindcss-rails", "~> 4.4"
 gem "discard", "~> 1.4"
-
-gem "tzinfo-data", platforms: %i[ windows jruby ]
-
+gem "devise", "~> 5.0"
+gem "image_processing", "~> 1.2"
 gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
-
 gem "bootsnap", require: false
-
 gem "kamal", require: false
-
 gem "thruster", require: false
-
-gem "image_processing", "~> 1.2"
+gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-
   gem "bundler-audit", require: false
-
   gem "brakeman", require: false
-
   gem "rubocop-rails-omakase", require: false
 end
 
@@ -45,5 +37,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "devise", "~> 5.0"

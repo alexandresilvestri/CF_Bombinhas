@@ -4,18 +4,18 @@ RSpec.describe "users/index", type: :view do
   before(:each) do
     assign(:users, [
       User.create!(
-        id: "",
-        email: "Email",
+        email: "user1@example.com",
         email_confirm: false,
-        password_hash: "Password Hash",
+        password: "password123",
+        password_confirmation: "password123",
         first_name: "First Name",
         last_name: "Last Name"
       ),
       User.create!(
-        id: "",
-        email: "Email",
+        email: "user2@example.com",
         email_confirm: false,
-        password_hash: "Password Hash",
+        password: "password123",
+        password_confirmation: "password123",
         first_name: "First Name",
         last_name: "Last Name"
       )
@@ -25,7 +25,6 @@ RSpec.describe "users/index", type: :view do
   it "renders a list of users" do
     render
     expect(rendered).to include("Email")
-    expect(rendered).to include("Password Hash")
     expect(rendered).to include("First Name")
     expect(rendered).to include("Last Name")
   end

@@ -13,6 +13,10 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/gyms", type: :request do
+  let(:user) { User.create!(email: "test@example.com", password: "password123", password_confirmation: "password123") }
+
+  before { sign_in user }
+
   # This should return the minimal set of attributes required to create a valid
   # Gym. As you add validations to Gym, be sure to
   # adjust the attributes here as well.

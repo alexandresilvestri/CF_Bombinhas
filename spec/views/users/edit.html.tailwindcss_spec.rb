@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "users/edit", type: :view do
   let(:user) {
     User.create!(
-      id: "",
-      email: "MyString",
+      email: "user@example.com",
       email_confirm: false,
-      password_hash: "MyString",
+      password: "password123",
+      password_confirmation: "password123",
       first_name: "MyString",
       last_name: "MyString"
     )
@@ -20,13 +20,11 @@ RSpec.describe "users/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", user_path(user), "post" do
-      assert_select "input[name=?]", "user[id]"
-
       assert_select "input[name=?]", "user[email]"
 
-      assert_select "input[name=?]", "user[email_confirm]"
+      assert_select "input[name=?]", "user[password]"
 
-      assert_select "input[name=?]", "user[password_hash]"
+      assert_select "input[name=?]", "user[password_confirmation]"
 
       assert_select "input[name=?]", "user[first_name]"
 

@@ -12,23 +12,18 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :id %>
-    <%= form.text_field :id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": user.errors[:id].none?, "border-red-400 focus:outline-red-600": user.errors[:id].any?}] %>
-  </div>
-
-  <div class="my-5">
     <%= form.label :email %>
     <%= form.text_field :email, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": user.errors[:email].none?, "border-red-400 focus:outline-red-600": user.errors[:email].any?}] %>
   </div>
 
-  <div class="my-5 flex items-center gap-2">
-    <%= form.label :email_confirm %>
-    <%= form.checkbox :email_confirm, class: ["block shadow-sm rounded-md border order-first h-5 w-5", {"border-gray-400 focus:outline-blue-600": user.errors[:email_confirm].none?, "border-red-400 focus:outline-red-600": user.errors[:email_confirm].any?}] %>
+  <div class="my-5">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": user.errors[:password].none?, "border-red-400 focus:outline-red-600": user.errors[:password].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :password_hash %>
-    <%= form.text_field :password_hash, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": user.errors[:password_hash].none?, "border-red-400 focus:outline-red-600": user.errors[:password_hash].any?}] %>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": user.errors[:password_confirmation].none?, "border-red-400 focus:outline-red-600": user.errors[:password_confirmation].any?}] %>
   </div>
 
   <div class="my-5">
