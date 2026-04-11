@@ -6,10 +6,14 @@ default: &default
 development:
   <<: *default
   database: eazybox
+  username: eazybox
+  host: localhost
 
 test:
   <<: *default
   database: eazybox_test
+  username: eazybox
+  host: localhost
 
 production:
   primary:
