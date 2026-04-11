@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "workouts/show", type: :view do
   before(:each) do
-    gym = Gym.create!(name: "Test Gym")
     assign(:workout, Workout.create!(
-      gym: gym,
       name: "Name",
       warm_up: "MyText",
       skill: "MyText",

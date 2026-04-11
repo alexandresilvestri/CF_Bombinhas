@@ -1,2 +1,0 @@
-class GymService
-end

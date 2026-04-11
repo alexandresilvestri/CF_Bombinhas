@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe "workouts/new", type: :view do
   before(:each) do
     assign(:workout, Workout.new(
-      gym: nil,
       name: "MyString",
       warm_up: "MyText",
       skill: "MyText",
@@ -15,8 +14,6 @@ RSpec.describe "workouts/new", type: :view do
     render
 
     assert_select "form[action=?][method=?]", workouts_path, "post" do
-      assert_select "input[name=?]", "workout[gym_id]"
-
       assert_select "input[name=?]", "workout[name]"
 
       assert_select "textarea[name=?]", "workout[warm_up]"

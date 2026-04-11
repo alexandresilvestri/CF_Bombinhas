@@ -2,17 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "workouts/index", type: :view do
   before(:each) do
-    gym = Gym.create!(name: "Test Gym")
     assign(:workouts, [
       Workout.create!(
-        gym: gym,
         name: "Name",
         warm_up: "MyText",
         skill: "MyText",
         wod: "MyText"
       ),
       Workout.create!(
-        gym: gym,
         name: "Name",
         warm_up: "MyText",
         skill: "MyText",

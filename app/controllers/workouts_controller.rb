@@ -65,6 +65,6 @@ class WorkoutsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def workout_params
-      params.expect(workout: [ :gym_id, :name, :warm_up, :skill, :wod ])
+      params.expect(workout: [ :name, :warm_up, :skill, :wod ])
     end
 end

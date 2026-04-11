@@ -10,18 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_06_003743) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_10_224910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
-
-  create_table "gyms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "corporate_name"
-    t.datetime "created_at", null: false
-    t.string "name", null: false
-    t.string "subdomain"
-    t.datetime "updated_at", null: false
-    t.index ["subdomain"], name: "index_gyms_on_subdomain", unique: true
-  end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -40,14 +31,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_06_003743) do
 
   create_table "workouts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.uuid "gym_id", null: false
     t.string "name", null: false
     t.text "skill"
     t.datetime "updated_at", null: false
     t.text "warm_up"
     t.text "wod"
-    t.index ["gym_id"], name: "index_workouts_on_gym_id"
   end
-
-  add_foreign_key "workouts", "gyms"
 end
