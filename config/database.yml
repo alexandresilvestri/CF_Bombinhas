@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: eazybox
-  username: eazybox
+  database: cfbombinhas
+  username: cfbombinhas
   host: localhost
 
 test:
   <<: *default
-  database: eazybox_test
-  username: eazybox
+  database: cfbombinhas_test
+  username: cfbombinhas
   host: localhost
 
 production:

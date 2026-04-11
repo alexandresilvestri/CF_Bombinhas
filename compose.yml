@@ -13,7 +13,7 @@ services:
     environment:
       RAILS_ENV: development
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-      DATABASE_URL: postgres://eazybox@db:5432/eazybox
+      DATABASE_URL: postgres://cfbombinhas@db:5432/cfbombinhas
       BINDING: "0.0.0.0"
       RUBY_DEBUG_PORT: "12345"
       RUBY_DEBUG_HOST: "0.0.0.0"
@@ -40,7 +40,7 @@ services:
     environment:
       RAILS_ENV: test
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-      DATABASE_URL: postgres://eazybox@db:5432/eazybox_test
+      DATABASE_URL: postgres://cfbombinhas@db:5432/cfbombinhas_test
     volumes:
       - .:/rails
       - bundle_cache:/usr/local/bundle
@@ -61,11 +61,11 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: eazybox
-      POSTGRES_DB: eazybox
+      POSTGRES_USER: cfbombinhas
+      POSTGRES_DB: cfbombinhas
       POSTGRES_HOST_AUTH_METHOD: trust
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U eazybox"]
+      test: ["CMD-SHELL", "pg_isready -U cfbombinhas"]
       interval: 5s
       timeout: 5s
       retries: 5

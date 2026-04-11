@@ -71,14 +71,14 @@ jobs:
       postgres:
         image: postgres:17
         env:
-          POSTGRES_USER: eazybox
+          POSTGRES_USER: cfbombinhas
           POSTGRES_PASSWORD: ""
-          POSTGRES_DB: eazybox_test
+          POSTGRES_DB: cfbombinhas_test
           POSTGRES_HOST_AUTH_METHOD: trust
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U eazybox -d eazybox_test"
+          --health-cmd "pg_isready -U cfbombinhas -d cfbombinhas_test"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -95,7 +95,7 @@ jobs:
         env:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
-          PGUSER: eazybox
+          PGUSER: cfbombinhas
           PGPASSWORD: ""
         run: |
           bin/rails db:prepare
