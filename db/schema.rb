@@ -10,33 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_11_145643) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_11_181032) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
-  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "email"
-    t.boolean "email_confirm"
-    t.string "encrypted_password"
-    t.string "first_name"
-    t.boolean "is_admin", default: false, null: false
-    t.boolean "is_coach", default: false, null: false
-    t.string "last_name"
-    t.datetime "remember_created_at"
-    t.datetime "reset_password_sent_at"
-    t.string "reset_password_token"
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "workouts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "name", null: false
-    t.text "skill"
-    t.datetime "updated_at", null: false
-    t.text "warm_up"
-    t.text "wod"
-  end
 end
