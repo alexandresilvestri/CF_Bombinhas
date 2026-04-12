@@ -1,16 +1,16 @@
 class DeviseInvitableAddToUsers < ActiveRecord::Migration[8.1]
   def up
-    change_table :users do |t|
-      t.string     :invitation_token
-      t.datetime   :invitation_created_at
-      t.datetime   :invitation_sent_at
-      t.datetime   :invitation_accepted_at
-      t.integer    :invitation_limit
-      t.references :invited_by, polymorphic: true
-      t.integer    :invitations_count, default: 0
-      t.index      :invitation_token, unique: true # for invitable
-      t.index      :invited_by_id
+    add_column :users, :invitation_token, :string unless column_exists?(:users, :invitation_token)
+    add_column :users, :invitation_created_at, :datetime unless column_exists?(:users, :invitation_created_at)
+    add_column :users, :invitation_sent_at, :datetime unless column_exists?(:users, :invitation_sent_at)
+    add_column :users, :invitation_accepted_at, :datetime unless column_exists?(:users, :invitation_accepted_at)
+    add_column :users, :invitation_limit, :integer unless column_exists?(:users, :invitation_limit)
+    unless column_exists?(:users, :invited_by_type)
+      add_reference :users, :invited_by, polymorphic: true
     end
+    add_column :users, :invitations_count, :integer, default: 0 unless column_exists?(:users, :invitations_count)
+    add_index :users, :invitation_token, unique: true unless index_exists?(:users, :invitation_token)
+    add_index :users, :invited_by_id unless index_exists?(:users, :invited_by_id)
   end
 
   def down
