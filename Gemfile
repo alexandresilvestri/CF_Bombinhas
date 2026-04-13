@@ -40,3 +40,5 @@ end
 
 gem "devise", "~> 5.0"
 gem "devise_invitable", "~> 2.0"
+
+gem "seedbank", "~> 0.5.0"
