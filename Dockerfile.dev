@@ -11,7 +11,8 @@ RUN apt-get update -qq && \
 
 RUN useradd -m -u 1000 -s /bin/bash devuser
 
-ENV BUNDLE_PATH="/usr/local/bundle"
+ENV RAILS_ENV="development" \
+    BUNDLE_PATH="/usr/local/bundle"
 
 RUN gem install foreman
 
