@@ -28,7 +28,7 @@ env:
     - POSTGRES_PASSWORD
     - DATABASE_URL
   clear:
-    1RAILS_ENV: production
+    RAILS_ENV: production
     SOLID_QUEUE_IN_PUMA: true
     RAILS_LOG_LEVEL: debug
 
