@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_12_142402) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_15_165139) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -185,6 +185,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_12_142402) do
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
     t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "workout_weekly_schedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "day_of_week", null: false
+    t.integer "max_capacity", null: false
+    t.time "start_time", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_of_week", "start_time"], name: "index_workout_weekly_schedules_on_day_of_week_and_start_time", unique: true
+    t.check_constraint "max_capacity > 0", name: "workout_weekly_schedules_max_capacity_positive"
   end
 
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
