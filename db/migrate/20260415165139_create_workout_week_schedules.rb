@@ -7,7 +7,7 @@ class CreateWorkoutWeekSchedules < ActiveRecord::Migration[8.1]
       t.timestamps
     end
 
-    add_index :workout_weekly_schedules, [:day_of_week, :start_time], unique: true
+    add_index :workout_weekly_schedules, [ :day_of_week, :start_time ], unique: true
     add_check_constraint :workout_weekly_schedules, "max_capacity > 0", name: "workout_weekly_schedules_max_capacity_positive"
   end
 end
