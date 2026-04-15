@@ -31,6 +31,7 @@ end
 group :development do
   gem "web-console"
   gem "hotwire-spark"
+  gem "lefthook", require: false
 end
 
 group :test do
