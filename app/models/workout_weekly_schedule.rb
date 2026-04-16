@@ -1,12 +1,12 @@
 class WorkoutWeeklySchedule < ApplicationRecord
   enum :day_of_week, {
-    sunday: 0,
-    monday: 1,
-    tuesday: 2,
-    wednesday: 3,
-    thursday: 4,
-    friday: 5,
-    saturday: 6
+    domingo: 0,
+    segunda: 1,
+    terça: 2,
+    quarta: 3,
+    quinta: 4,
+    sexta: 5,
+    sábado: 6
   }
 
   validates :day_of_week, presence: true

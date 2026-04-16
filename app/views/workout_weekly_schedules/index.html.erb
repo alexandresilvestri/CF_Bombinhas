@@ -1,0 +1,26 @@
+<h1 class="text-2xl font-bold mb-6">Cronograma semanal de treinos</h1> 
+
+<% if can_manage? %>
+  <div class="mb-4">
+    <%= link_to "Editar Cronograma", # todo edit action,
+        class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+  </div>
+<% end %>
+
+<div class="grid grid-cols-1 md:grid-cols-7 gap-2">
+  <% WorkoutWeeklySchedule.day_of_weeks.keys.each do |day| %> 
+    <div class="border rounded">
+      <div class="bg-gray-800 text-white text-center py-2 font-semibold">
+        <%= day.capitalize %>
+      </div>
+
+      <div class="p-2 space-y-2 min-h-[100px]">
+        <% if @schedules_by_day[day].present? %>
+          <% @schedules_by_day[day].each do |schedule| %>
+            <% render "schedule_card", schedule: schedule %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
