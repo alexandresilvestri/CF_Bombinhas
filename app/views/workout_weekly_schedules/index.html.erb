@@ -11,7 +11,7 @@
   <% WorkoutWeeklySchedule.day_of_weeks.keys.each do |day| %> 
     <div class="border rounded">
       <div class="bg-gray-800 text-white text-center py-2 font-semibold">
-        <%= day.capitalize %>
+        <%= t(day, scope: "activerecord.attributes.workout_weekly_schedules").capitalize %>
       </div>
 
       <div class="p-2 space-y-2 min-h-[100px]">

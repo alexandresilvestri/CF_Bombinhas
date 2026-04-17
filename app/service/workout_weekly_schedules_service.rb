@@ -1,2 +1,2 @@
-class WorkoutWeeklyScheduleService
+class WorkoutWeeklySchedulesService
 end
