@@ -1,0 +1,17 @@
+<div class="border rounded p-2 bg-white">
+  <%= link_to workout_weekly_schedule_path(schedule), class: "block hover:bg-gray-50" do %>
+    <div class="font-semibold"><%= schedule.start_time.strftime("%H:%M") %></div>
+    <div class="text-sm text-gray-600"><%= schedule.max_capacity %> vagas</div>
+  <% end %>
+
+  <% if can_manage? %>
+    <div class="flex gap-2 mt-2">
+      <%= link_to "Editar", edit_workout_weekly_schedule_path(schedule),
+          class: "text-sm text-blue-600 hover:underline" %>
+      <%= button_to "Excluir", workout_weekly_schedule_path(schedule),
+          method: :delete,
+          data: { turbo_confirm: "Tem certeza que deseja excluir este horário?" },
+          class: "text-sm text-red-600 hover:underline" %>
+    </div>
+  <% end %>
+</div>

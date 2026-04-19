@@ -1,5 +1,5 @@
 class WorkoutWeeklySchedule < ApplicationRecord
-  enum :day_of_week, {
+  enum :week_day, {
     sunday: 0,
     monday: 1,
     tuesday: 2,
@@ -9,8 +9,8 @@ class WorkoutWeeklySchedule < ApplicationRecord
     saturday: 6
   }
 
-  validates :day_of_week, presence: true
+  validates :week_day, presence: true
   validates :max_capacity, presence: true, numericality: { greater_than: 0, only_integer: true }
   validates :start_time, presence: true,
-    uniqueness: { scope: :day_of_week, message: "already has a class at this time" }
+    uniqueness: { scope: :week_day, message: "already has a class at this time" }
 end

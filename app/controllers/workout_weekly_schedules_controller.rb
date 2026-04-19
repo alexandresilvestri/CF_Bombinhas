@@ -1,11 +1,13 @@
 class WorkoutWeeklySchedulesController < AuthenticatedController
-  before_action :authorize_manage!, only: [ :new, :create, :edit, :destroy ]
+  before_action :authorize_manage!, only: [ :new, :create, :update, :edit, :destroy ]
   before_action :set_schedule, only: [ :show, :edit, :update, :destroy ]
 
   helper_method :can_manage?
 
   def index
-    @schedules_by_day = WorkoutWeeklySchedule.order(:day_of_week, :start_time).group_by(&:day_of_week)
+    @schedules_by_day = WorkoutWeeklySchedule
+      .order(:week_day, :start_time)
+      .group_by(&:week_day)
   end
 
   def show
@@ -22,7 +24,7 @@ class WorkoutWeeklySchedulesController < AuthenticatedController
     @schedule = WorkoutWeeklySchedule.new(schedule_params)
 
       if @schedule.save
-        redirect_to workout_weekly_schdules_path, notice: "Schedule created"
+        redirect_to workout_weekly_schedules_path, notice: "Schedule created"
       else
         render :new, status: :unprocessable_entity
       end
@@ -30,7 +32,7 @@ class WorkoutWeeklySchedulesController < AuthenticatedController
 
   def update
     if @schedule.update(schedule_params)
-      redirect_to workout_weekly_schdules_path, notice: "Schedule updated"
+      redirect_to workout_weekly_schedules_path, notice: "Schedule updated"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,13 +40,18 @@ class WorkoutWeeklySchedulesController < AuthenticatedController
 
   def destroy
     @schedule.destroy
-    redirect_to workout_weekly_schdules_path, notice: "Schedule deleted"
+    redirect_to workout_weekly_schedules_path, notice: "Schedule deleted"
   end
 
   private
 
   def set_schedule
     @schedule = WorkoutWeeklySchedule.find(params[:id])
+  end
+
+  def schedule_params
+    params.require(:workout_weekly_schedule)
+      .permit(:week_day, :start_time, :max_capacity)
   end
 
   def authorize_manage!

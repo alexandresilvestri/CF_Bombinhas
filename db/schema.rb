@@ -189,11 +189,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_15_165139) do
 
   create_table "workout_weekly_schedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.integer "day_of_week", null: false
+    t.integer "week_day", null: false
     t.integer "max_capacity", null: false
     t.time "start_time", null: false
     t.datetime "updated_at", null: false
-    t.index ["day_of_week", "start_time"], name: "index_workout_weekly_schedules_on_day_of_week_and_start_time", unique: true
+    t.index ["week_day", "start_time"], name: "index_workout_weekly_schedules_on_week_day_and_start_time", unique: true
     t.check_constraint "max_capacity > 0", name: "workout_weekly_schedules_max_capacity_positive"
   end
 

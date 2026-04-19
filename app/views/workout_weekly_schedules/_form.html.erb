@@ -1,0 +1,39 @@
+<%= form_with(model: schedule, local: true, class: "space-y-4") do |f| %>
+  <% if schedule.errors.any? %>
+    <div class="bg-red-50 border border-red-300 text-red-800 p-3 rounded">
+      <p class="font-semibold mb-1">
+        <%= pluralize(schedule.errors.count, "erro") %> impediram o salvamento:
+      </p>
+      <ul class="list-disc list-inside text-sm">
+        <% schedule.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :week_day, "Dia da semana", class: "block font-semibold mb-1" %>
+    <%= f.select :week_day,
+        WorkoutWeeklySchedule.week_days.keys.map { |day|
+          [t(day, scope: "activerecord.attributes.workout_weekly_schedules").capitalize, day]
+        },
+        { include_blank: "Selecione..." },
+        class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :start_time, "Horário de início", class: "block font-semibold mb-1" %>
+    <%= f.time_field :start_time, class: "border rounded px-2 py-1" %>
+  </div>
+
+  <div>
+    <%= f.label :max_capacity, "Vagas", class: "block font-semibold mb-1" %>
+    <%= f.number_field :max_capacity, min: 1, step: 1,
+        class: "border rounded px-2 py-1 w-32" %>
+  </div>
+
+  <div>
+    <%= f.submit class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer" %>
+  </div>
+<% end%>
