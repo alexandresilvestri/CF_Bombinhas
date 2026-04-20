@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_15_165139) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_19_230235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -187,14 +187,39 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_15_165139) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workout_classes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.date "date", null: false
+    t.integer "day", null: false
+    t.integer "max_capacity", default: 16, null: false
+    t.time "start_time", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "workout_id", null: false
+    t.index ["workout_id"], name: "index_workout_classes_on_workout_id"
+  end
+
   create_table "workout_weekly_schedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.integer "week_day", null: false
     t.integer "max_capacity", null: false
     t.time "start_time", null: false
     t.datetime "updated_at", null: false
+    t.integer "week_day", null: false
     t.index ["week_day", "start_time"], name: "index_workout_weekly_schedules_on_week_day_and_start_time", unique: true
     t.check_constraint "max_capacity > 0", name: "workout_weekly_schedules_max_capacity_positive"
+  end
+
+  create_table "workouts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.date "archived_at"
+    t.datetime "created_at", null: false
+    t.text "notes"
+    t.text "skill"
+    t.integer "timecap"
+    t.string "tittle", null: false
+    t.datetime "updated_at", null: false
+    t.text "warmup"
+    t.text "wod", null: false
+    t.string "wod_type"
+    t.index ["tittle"], name: "index_workouts_on_tittle", unique: true
   end
 
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
@@ -203,4 +228,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_15_165139) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "workout_classes", "workouts"
 end
