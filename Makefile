@@ -43,6 +43,9 @@ db-create:
 db-migrate:
 	docker compose exec web bin/rails db:migrate
 
+migrate-make:
+	docker compose exec web bin/rails g migration $(name)
+
 db-rollback:
 	docker compose exec web bin/rails db:rollback
 
